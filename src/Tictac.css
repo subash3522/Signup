@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.square{
+    height: 50px;
+    width: 50px;
+    
+}
+.bigbox{
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+}

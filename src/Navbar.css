@@ -1,0 +1,39 @@
+ * {margin: 0;
+    padding: 0;
+    }
+
+
+.naubar{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(163, 163, 234);
+ 
+
+}
+.logo{
+    background-color: red;
+    border: solid black;
+}
+
+.menu{
+   display: flex;
+   justify-content: space-between;
+    align-items: center;
+    border: solid red;
+     
+}
+
+.naubar ul li{
+    display: flex;
+    justify-content: space-between;
+     align-items: center;
+    list-style: none;
+}
+.naubar ul li a{
+    display: flex;
+    justify-content: space-between;
+     align-items: center;
+    text-decoration: none;
+    color: black;
+    border: solid black;
+}
