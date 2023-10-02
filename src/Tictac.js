@@ -64,7 +64,7 @@ function Tictac() {
   const aaluFunction = ()=>{
     try
   {
-    axios.get("http://localhost:5000/api").then((response)=>{
+    axios.get("http://localhost:5000/bpi").then((response)=>{
       // setUserData(response.data)
       console.log((response.data.user.length));
     })
@@ -95,6 +95,9 @@ function Tictac() {
 
   // }
 
+
+
+
   return (
     <>
       <div className="winner"> {status}</div>
@@ -112,6 +115,7 @@ function Tictac() {
         {history.map((value, index)=>
         <Move moveHandler = {moveHandler} index ={index} key={index} history = {history}/>
         )}
+       
     </>
   );
 }

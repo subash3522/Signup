@@ -1,0 +1,12 @@
+.thumbnail{
+    height: 100px;
+    width: 100px;
+    border: solid black;
+    
+
+}
+.thumbnail img{
+    width: 100%;
+   object-fit: contain;
+
+}
