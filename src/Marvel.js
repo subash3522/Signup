@@ -26,19 +26,65 @@ function Marvel() {
   }, []);
 
  
+  useEffect(()=>{
+    try{
+    axios.get(
+    "https://nepaligardencms.creatudevelopers.com.np/api/v1/product/get"
+    
+    
+    ).then((res)=>{
+    
+    console.log(res.data.products.data);
+    })}
+    catch(err){
+        console.error(err)
+    }
+    },[])
 
+    const [pageNumber, setPageNumber] = useState(1);
+    const pageItems = 5
+
+    const pageHandler= (page)=>{
+      setPageNumber(page)
+    }
+
+
+    const startIndex = (pageNumber-1)*pageItems;
+    const endIndex = startIndex+pageItems;
+    const pageLength = Math.ceil(marvelResult.length / pageItems)
+    
+    const itemDetails = marvelResult.slice(startIndex,endIndex)
+
+    const pageNumberRender=() =>{
+      const pageNumbers = [];
+
+      for(let i = 1; i<pageLength; i++){
+        pageNumbers.push(
+          <span
+          key={i}
+          onClick={()=>pageHandler(i)
+          }
+          >
+            {i}
+
+          </span>
+
+        )
+      }
+      return pageNumbers;
+    }
   return (
     <>
       <table>
         <thead>
           <tr>
-            <th>Thumbnail</th>
-            <th>Name</th>
-            <th>Description</th>
+            <th className="th1">Thumbnail</th>
+            <th className="th2">Name</th>
+            <th className="th3">Description</th>
           </tr>
         </thead>
        
-          {marvelResult.map((value,index) => (
+          {itemDetails.map((value,index) => (
             <Marveltable
                 id = {index}
               name={value.name}
@@ -48,6 +94,7 @@ function Marvel() {
           ))}
        
       </table>
+      <div>{pageNumberRender()}</div>
    
     </>
   );

@@ -2,11 +2,37 @@
     height: 100px;
     width: 100px;
     border: solid black;
-    
+
+
 
 }
 .thumbnail img{
     width: 100%;
    object-fit: contain;
 
+}
+table{
+    width: 90%;
+    border: solid black;
+}
+
+table td {
+    margin-bottom: 50px;
+    border: solid black;
+    text-align: center;
+
+}
+.th1{
+    width: 10%;
+    text-align: center;
+}
+
+.th3{
+    width: 50%;
+    text-align: center;
+}
+.th2{
+    width: 40%;
+    border: solid black;
+    text-align: center;
 }

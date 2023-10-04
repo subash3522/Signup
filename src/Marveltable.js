@@ -5,7 +5,7 @@ function Marveltable({thumbnail,name, description}) {
     <>
     <tbody>
     <tr>
-        <td className='thumbnail'><img src={thumbnail+'.jpg'} alt="nothins" /></td>
+        <td className='thumbnail'><img src={thumbnail.path+'.jpg'} alt="nothins" /></td>
         <td>{name}</td>
         <td>{description}</td>
     </tr>
