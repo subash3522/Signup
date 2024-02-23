@@ -25,54 +25,55 @@ function Marvel() {
     marvelApp();
   }, []);
 
- 
-  useEffect(()=>{
-    try{
-    axios.get(
-    "https://nepaligardencms.creatudevelopers.com.np/api/v1/product/get"
-    
-    
-    ).then((res)=>{
-    
-    console.log(res.data.products.data);
-    })}
-    catch(err){
-        console.error(err)
-    }
-    },[])
-
-    const [pageNumber, setPageNumber] = useState(1);
-    const pageItems = 5
-
-    const pageHandler= (page)=>{
-      setPageNumber(page)
-    }
-
-
-    const startIndex = (pageNumber-1)*pageItems;
-    const endIndex = startIndex+pageItems;
-    const pageLength = Math.ceil(marvelResult.length / pageItems)
-    
-    const itemDetails = marvelResult.slice(startIndex,endIndex)
-
-    const pageNumberRender=() =>{
-      const pageNumbers = [];
-
-      for(let i = 1; i<pageLength; i++){
-        pageNumbers.push(
-          <span
-          key={i}
-          onClick={()=>pageHandler(i)
-          }
-          >
-            {i}
-
-          </span>
-
+  useEffect(() => {
+    try {
+      axios
+        .get(
+          "https://nepaligardencms.creatudevelopers.com.np/api/v1/product/get"
         )
-      }
-      return pageNumbers;
+        .then((res) => {
+          console.log(res.data.products.data);
+        });
+    } catch (err) {
+      console.error(err);
     }
+  }, []);
+
+  const [pageNumber, setPageNumber] = useState(1);
+  const pageItems = 5;
+
+  const pageHandler = (page) => {
+    setPageNumber(page);
+  };
+
+  const startIndex = (pageNumber - 1) * pageItems;
+  const endIndex = startIndex + pageItems;
+  const pageLength = Math.ceil(marvelResult.length / pageItems);
+
+  const itemDetails = marvelResult.slice(startIndex, endIndex);
+
+  const pageNumberRender = () => {
+    const pageNumbers = [];
+
+    for (let i = 1; i < pageLength; i++) {
+      pageNumbers.push(
+        <nav aria-label="Page navigation example">
+          <ul className="pagination d-flex">
+            <li className="page-item">
+              <span
+                className="page-link"
+                key={i}
+                onClick={() => pageHandler(i)}
+              >
+                {i}
+              </span>
+            </li>
+          </ul>
+        </nav>
+      );
+    }
+    return pageNumbers;
+  };
   return (
     <>
       <table>
@@ -83,19 +84,17 @@ function Marvel() {
             <th className="th3">Description</th>
           </tr>
         </thead>
-       
-          {itemDetails.map((value,index) => (
-            <Marveltable
-                id = {index}
-              name={value.name}
-              description={value.description}
-              thumbnail={value.thumbnail}
-            />
-          ))}
-       
+
+        {itemDetails.map((value, index) => (
+          <Marveltable
+            id={index}
+            name={value.name}
+            description={value.description}
+            thumbnail={value.thumbnail}
+          />
+        ))}
       </table>
       <div>{pageNumberRender()}</div>
-   
     </>
   );
 }
